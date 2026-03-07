@@ -72,6 +72,7 @@ button:hover {
     if (input === correctPassword) {
       document.getElementById("login").classList.add("hidden");
       document.getElementById("content").classList.remove("hidden");
+      document.getElementById("music").play();
     } else {
       alert("Senha errada 😢");
     }
