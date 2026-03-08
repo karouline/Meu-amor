@@ -68,9 +68,15 @@ button:hover {
   <h1>Feliz Dia dos Namorados 💖</h1>
   <p>Você é o amor da minha vida.</p><button onclick="showMessage()">Nossa História</button> <button onclick="showReasons()">Por que eu te amo</button>
 
-  <p id="extra" style="margin-top:15px;"></p>  <audio id="music" loop> <div id="carta" class="hidden" style="margin-top:20px; text-align:left;"></div>
-    <source src="musica.mp3" type="audio/mpeg">
-  <button onclick="mostrarCarta()">Ler minha carta 💌</button>
+  <p id="extra" style="margin-top:15px;"></p>
+
+<button onclick="mostrarCarta()">Ler minha carta 💌</button>
+
+<div id="carta" class="hidden" style="margin-top:20px; text-align:left;"></div>
+
+<audio id="music" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
 
 </div><script>
   const correctPassword = "idchlitalaiwyigasomf";
@@ -94,31 +100,22 @@ button:hover {
     document.getElementById("extra").innerText = "Eu te amo pelo seu sorriso, pelo seu carinho, pelo seu jeito único e por ser exatamente quem você é.";
   }
 
-  function toggleMusic() {
-    const music = document.getElementById("music");
-    if (music.paused) {
-      music.play();
-    } else {
-      music.pause();
-    }
-
-    function mostrarCarta() {
+  function mostrarCarta() {
   const carta = document.getElementById("carta");
   carta.classList.remove("hidden");
   carta.innerHTML = `
-  <h2>Minha carta para você 💖</h2>
-  <p>
-  Aqui você pode escrever um texto enorme.
-  Pode colocar vários parágrafos.
-  Pode escrever 50 linhas.
-  Pode declarar tudo.
-  Pode fazer ele chorar.
-  </p>
-  <p>
-  Você pode continuar escrevendo aqui normalmente...
-  </p>
+    <h2>Minha carta para você 💖</h2>
+    <p>
+    Aqui você pode escrever um texto enorme.
+    Pode colocar vários parágrafos.
+    Pode escrever 50 linhas.
+    Pode declarar tudo.
+    Pode fazer ele chorar.
+    </p>
+    <p>
+    Você pode continuar escrevendo aqui normalmente...
+    </p>
   `;
-    }
   }
 </script></body>
 </html>
