@@ -1,22 +1,26 @@
-<!DOCTYPE html><html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Área Secreta 💖</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ffb6c1, #ff69b4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 40px 0;
-      text-align: center;
-      color: white;
-      overflow-y: auto;
-    }.container {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Área Secreta 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 0;
+  text-align: center;
+  color: white;
+  overflow-y: auto;
+}
+
+.container {
   background: rgba(255, 255, 255, 0.15);
   padding: 30px;
   border-radius: 20px;
@@ -42,6 +46,7 @@ button {
   font-weight: bold;
   cursor: pointer;
   margin: 5px;
+  transition: all 0.3s ease;
 }
 
 button:hover {
@@ -52,68 +57,104 @@ button:hover {
   display: none;
 }
 
-    #carta {
+#carta {
   background: rgba(255,255,255,0.2);
   padding: 20px;
   border-radius: 15px;
-    }
+  margin-top: 20px;
+  text-align: left;
+  line-height: 1.6;
+}
 
-  </style>
+/* ===== EFEITO GELATINA ===== */
+@keyframes gelatina {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.2, 0.8); }
+  50%  { transform: scale(0.8, 1.2); }
+  75%  { transform: scale(1.1, 0.9); }
+  100% { transform: scale(1); }
+}
+
+.gelatina {
+  animation: gelatina 0.5s ease;
+}
+
+/* ===== CORAÇÕES SUBINDO ===== */
+.coracao {
+  position: fixed;
+  bottom: 0;
+  font-size: 20px;
+  animation: subir 3s linear forwards;
+}
+
+@keyframes subir {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
 </head>
-<body><div class="container" id="login">
+
+<body>
+
+<div class="container" id="login">
   <h2>Digite nossa senha 💌</h2>
   <input type="password" id="password" placeholder="Nossa senha...">
   <button onclick="checkPassword()">Entrar</button>
-</div><div class="container hidden" id="content">
+</div>
+
+<div class="container hidden" id="content">
   <h1>Feliz Dia dos Namorados 💖</h1>
-  <p>Você é o amor da minha vida.</p><button onclick="showMessage()">Nossa História</button> <button onclick="showReasons()">Por que eu te amo</button>
+  <p>Você é o amor da minha vida.</p>
+
+  <button onclick="showMessage()">Nossa História</button>
+  <button onclick="showReasons()">Por que eu te amo</button>
 
   <p id="extra" style="margin-top:15px;"></p>
 
-<button onclick="mostrarCarta()">Ler minha carta 💌</button>
+  <button id="btnCarta" onclick="mostrarCarta()">Ler minha carta 💌</button>
 
-<div id="carta" class="hidden" style="margin-top:20px; text-align:left;"></div>
+  <div id="carta" class="hidden"></div>
 
-<audio id="music" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
+  <audio id="music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+</div>
 
-</div><script>
-  const correctPassword = "idchlitalaiwyigasomf";
+<script>
+const correctPassword = "idchlitalaiwyigasomf";
 
-  function checkPassword() {
-    const input = document.getElementById("password").value;
-    if (input === correctPassword) {
-      document.getElementById("login").classList.add("hidden");
-      document.getElementById("content").classList.remove("hidden");
-      document.getElementById("music").play();
-    } else {
-      alert("Senha incorreta 😠");
-    }
-  }
-
-  function showMessage() {
-  const extra = document.getElementById("extra");
-
-  if (extra.innerText !== "") {
-    extra.innerText = "";
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  if (input === correctPassword) {
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("content").classList.remove("hidden");
+    document.getElementById("music").play();
   } else {
-    extra.innerText = "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";
+    alert("Senha incorreta 😠");
   }
-  }
+}
 
-  function showReasons() {
+function showMessage() {
   const extra = document.getElementById("extra");
+  extra.innerText = extra.innerText !== "" 
+    ? "" 
+    : "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";
+}
 
-  if (extra.innerText !== "") {
-    extra.innerText = "";
-  } else {
-    extra.innerText = "Eu te amo pelo seu sorriso, pelo seu carinho, pelo seu jeito único e por ser exatamente quem você é.";
-  }
-  }
+function showReasons() {
+  const extra = document.getElementById("extra");
+  extra.innerText = extra.innerText !== "" 
+    ? "" 
+    : "Eu te amo pelo seu sorriso, pelo seu carinho, pelo seu jeito único e por ser exatamente quem você é.";
+}
 
-  function mostrarCarta() {
+/* ===== CARTA COM GELATINA + CORAÇÕES ===== */
+function mostrarCarta() {
   const carta = document.getElementById("carta");
+  const botao = document.getElementById("btnCarta");
+
+  botao.classList.add("gelatina");
+  setTimeout(() => botao.classList.remove("gelatina"), 500);
 
   if (!carta.classList.contains("hidden")) {
     carta.classList.add("hidden");
@@ -122,14 +163,28 @@ button:hover {
     carta.classList.remove("hidden");
     carta.innerHTML = `
       <h2>Minha carta para você 💖</h2>
-      <p>
-      Aqui você pode escrever um texto enorme...
-      </p>
-      <p>
-      Você pode continuar escrevendo aqui normalmente...
-      </p>
+      <p>Aqui você pode escrever seu textão enorme e dramático.</p>
+      <p>Pode colocar quantos parágrafos quiser.</p>
     `;
+    soltarCoracoes();
   }
+}
+
+function soltarCoracoes() {
+  for (let i = 0; i < 12; i++) {
+    const coracao = document.createElement("div");
+    coracao.innerHTML = "💖";
+    coracao.classList.add("coracao");
+
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.fontSize = (20 + Math.random() * 20) + "px";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(() => coracao.remove(), 3000);
   }
-</script></body>
+}
+</script>
+
+</body>
 </html>
