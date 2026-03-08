@@ -121,16 +121,33 @@ button:hover {
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
 </div>
+  <div id="startScreen" onclick="iniciarSite()" 
+style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:flex; justify-content:center; align-items:center; color:white; font-size:20px;">
+  Toque para entrar 💖
+  </div>
 
 <script>
+  // Se já estiver logado, mostrar conteúdo direto
+window.onload = function() {
+  if (localStorage.getItem("logado") === "sim") {
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("content").classList.remove("hidden");
+  }
+}
 const correctPassword = "idchlitalaiwyigasomf";
 
 function checkPassword() {
   const input = document.getElementById("password").value;
+
   if (input === correctPassword) {
+
+    // SALVA QUE ELE ESTÁ LOGADO
+    localStorage.setItem("logado", "sim");
+
     document.getElementById("login").classList.add("hidden");
     document.getElementById("content").classList.remove("hidden");
     document.getElementById("music").play();
+
   } else {
     alert("Senha incorreta 😠");
   }
@@ -191,6 +208,12 @@ function soltarCoracoes() {
     setTimeout(() => coracao.remove(), 3000);
   }
 }
+
+ function iniciarSite() {
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("music").play();
+}
+
 </script>
 
 </body>
