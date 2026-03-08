@@ -122,27 +122,30 @@ window.onload = function() {
   if (localStorage.getItem("logado") === "sim") {
     document.getElementById("login").classList.add("hidden");
     document.getElementById("content").classList.remove("hidden");
-    document.getElementById("music").play();
   }
 }
 const correctPassword = "idchlitalaiwyigasomf";  
   
-function checkPassword() {  
-  const input = document.getElementById("password").value;  
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  const music = document.getElementById("music");
+
+  if (input === correctPassword) {
+    localStorage.setItem("logado", "sim");
+
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("content").classList.remove("hidden");
+
+    music.currentTime = 0;
+    music.play().catch(error => {
+      console.log("Autoplay bloqueado:", error);
+    });
+
+  } else {
+    alert("Senha incorreta 😠");
+  }
+}
   
-  if (input === correctPassword) {  
-  
-    // SALVA QUE ELE ESTÁ LOGADO  
-    localStorage.setItem("logado", "sim");  
-  
-    document.getElementById("login").classList.add("hidden");  
-    document.getElementById("content").classList.remove("hidden");  
-    document.getElementById("music").play();  
-  
-  } else {  
-    alert("Senha incorreta 😠");  
-  }  
-}  
   
 function showMessage() {  
   const extra = document.getElementById("extra");  
