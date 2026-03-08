@@ -111,6 +111,13 @@ Por que eu te amo 💕
   <button onclick="entrarDireto()">Entrar 💖</button>
   </div>
 
+  <div class="container hidden" id="perguntaAmor">
+  <h2>Você me ama mesmo?? 😼</h2>
+
+  <button id="btnSim" onclick="clicouSim()">Sim 💕</button>
+  <button id="btnNao" onmouseover="fugirNao()">Não 😡</button>
+  </div>
+
 <div class="container hidden" id="paginaFotos">
   <h1>Nós dois 💕</h1>
 
@@ -137,9 +144,14 @@ function checkPassword() {
     localStorage.setItem("logado", "sim");
 
     document.getElementById("login").classList.add("hidden");
-    document.getElementById("content").classList.remove("hidden");
-
-    music.play();
+  
+  if (!localStorage.getItem("jaRespondeu")) {
+  document.getElementById("perguntaAmor").classList.remove("hidden");
+} else {
+  document.getElementById("content").classList.remove("hidden");
+  music.play();
+    }
+    
   } else {
     alert("Senha incorreta 😠");
   }
@@ -225,6 +237,42 @@ function entrarDireto() {
   music.currentTime = 0;
   music.play();
 }
-  
+
+function fugirNao() {
+  const botao = document.getElementById("btnNao");
+
+  botao.style.position = "absolute";
+  botao.style.top = Math.random() * 80 + "%";
+  botao.style.left = Math.random() * 80 + "%";
+}
+
+
+  let etapa = 0;
+
+function clicouSim() {
+  const btn = document.getElementById("btnSim");
+
+  if (etapa === 0) {
+    btn.innerText = "Você tem certeza? 🤨";
+  } else if (etapa === 1) {
+    btn.innerText = "Tem certeza mesmo mesmo? 😳";
+  } else if (etapa === 2) {
+    btn.innerText = "Tá… você me ama hihi 💕";
+
+    setTimeout(() => {
+      localStorage.setItem("jaRespondeu", "sim");
+
+      document.getElementById("perguntaAmor").classList.add("hidden");
+      document.getElementById("content").classList.remove("hidden");
+
+      document.getElementById("music").play();
+    }, 1000);
+
+    return;
+  }
+
+  etapa++;
+}
+    
 </script>  </body>  
 </html>
