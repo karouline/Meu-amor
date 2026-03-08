@@ -114,20 +114,22 @@ button:hover {
 
   function mostrarCarta() {
   const carta = document.getElementById("carta");
-  carta.classList.remove("hidden");
-  carta.innerHTML = `
-    <h2>Minha carta para você 💖</h2>
-    <p>
-    Aqui você pode escrever um texto enorme.
-    Pode colocar vários parágrafos.
-    Pode escrever 50 linhas.
-    Pode declarar tudo.
-    Pode fazer ele chorar.
-    </p>
-    <p>
-    Você pode continuar escrevendo aqui normalmente...
-    </p>
-  `;
+
+  if (!carta.classList.contains("hidden")) {
+    carta.classList.add("hidden");
+    carta.innerHTML = "";
+  } else {
+    carta.classList.remove("hidden");
+    carta.innerHTML = `
+      <h2>Minha carta para você 💖</h2>
+      <p>
+      Aqui você pode escrever um texto enorme...
+      </p>
+      <p>
+      Você pode continuar escrevendo aqui normalmente...
+      </p>
+    `;
+  }
   }
 </script></body>
 </html>
