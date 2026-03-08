@@ -127,13 +127,19 @@ Por que eu te amo 💕
   <button onclick="voltarPrincipal()">Voltar 💌</button>
 </div> 
   <script>  
-  // Se já estiver logado, mostrar conteúdo direto
-window.onload = function() {
+    
+  window.onload = function() {
   if (localStorage.getItem("logado") === "sim") {
     document.getElementById("login").classList.add("hidden");
-    document.getElementById("boasVindas").classList.remove("hidden");
+
+    if (!localStorage.getItem("jaRespondeu")) {
+      document.getElementById("perguntaAmor").classList.remove("hidden");
+    } else {
+      document.getElementById("boasVindas").classList.remove("hidden");
+    }
   }
-}
+  }
+    
 const correctPassword = "idchlitalaiwyigasomf";  
   
 function checkPassword() {
