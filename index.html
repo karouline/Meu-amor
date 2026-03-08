@@ -104,8 +104,6 @@ Por que eu te amo 💕
   <div id="carta" class="hidden"></div>    <audio id="music" loop>  
     <source src="musica.mp3" type="audio/mpeg">  
   </audio>  
-  <!-- galeria aqui -->
-  </div>
   </div> <!-- fecha content -->
   <div class="container hidden" id="boasVindas">
   <h2>Você voltou, meu amor 💕</h2>
@@ -219,13 +217,14 @@ function voltarPrincipal() {
   document.getElementById("music").play();  
 }  
  
- function entrarDireto() {
+function entrarDireto() {
   document.getElementById("boasVindas").classList.add("hidden");
   document.getElementById("content").classList.remove("hidden");
 
   const music = document.getElementById("music");
+  music.currentTime = 0;
   music.play();
-    }
+}
   
 </script>  </body>  
 </html>
