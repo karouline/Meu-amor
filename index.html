@@ -107,6 +107,11 @@ Por que eu te amo 💕
   <!-- galeria aqui -->
   </div>
   </div> <!-- fecha content -->
+  <div class="container hidden" id="boasVindas">
+  <h2>Você voltou, meu amor 💕</h2>
+  <p>Eu sabia que você não resistiria a mim muehuehue 😼</p>
+  <button onclick="entrarDireto()">Entrar 💖</button>
+  </div>
 
 <div class="container hidden" id="paginaFotos">
   <h1>Nós dois 💕</h1>
@@ -121,7 +126,7 @@ Por que eu te amo 💕
 window.onload = function() {
   if (localStorage.getItem("logado") === "sim") {
     document.getElementById("login").classList.add("hidden");
-    document.getElementById("content").classList.remove("hidden");
+    document.getElementById("boasVindas").classList.remove("hidden");
   }
 }
 const correctPassword = "idchlitalaiwyigasomf";  
@@ -136,11 +141,7 @@ function checkPassword() {
     document.getElementById("login").classList.add("hidden");
     document.getElementById("content").classList.remove("hidden");
 
-    music.currentTime = 0;
-    music.play().catch(error => {
-      console.log("Autoplay bloqueado:", error);
-    });
-
+    music.play();
   } else {
     alert("Senha incorreta 😠");
   }
@@ -217,6 +218,14 @@ function voltarPrincipal() {
   document.getElementById("startScreen").style.display = "none";  
   document.getElementById("music").play();  
 }  
+ 
+ function entrarDireto() {
+  document.getElementById("boasVindas").classList.add("hidden");
+  document.getElementById("content").classList.remove("hidden");
+
+  const music = document.getElementById("music");
+  music.play();
+    }
   
 </script>  </body>  
 </html>
