@@ -104,27 +104,25 @@ Por que eu te amo 💕
   <div id="carta" class="hidden"></div>    <audio id="music" loop>  
     <source src="musica.mp3" type="audio/mpeg">  
   </audio>  
-  <div class="container hidden" id="paginaFotos">
-</div>  
-  <div id="paginaFotos" class="hidden">
   <!-- galeria aqui -->
   </div>
-  </div>  <script>  
-  // Se já estiver logado, mostrar conteúdo direto
-window.onload = function() {
-  if (localStorage.getItem("logado") === "sim") {
-    document.getElementById("login").classList.add("hidden");
-    document.getElementById("content").classList.remove("hidden");
-    document.getElementById("music").play();
+  </div> <!-- fecha content -->
 
+<div class="container hidden" id="paginaFotos">
   <h1>Nós dois 💕</h1>
 
   <img src="foto1.jpg" style="width:100%; border-radius:20px; margin-bottom:15px;">
   <img src="foto2.jpg" style="width:100%; border-radius:20px; margin-bottom:15px;">
 
   <button onclick="voltarPrincipal()">Voltar 💌</button>
-
-</div>
+</div> 
+  <script>  
+  // Se já estiver logado, mostrar conteúdo direto
+window.onload = function() {
+  if (localStorage.getItem("logado") === "sim") {
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("content").classList.remove("hidden");
+    document.getElementById("music").play();
   }
 }
 const correctPassword = "idchlitalaiwyigasomf";  
