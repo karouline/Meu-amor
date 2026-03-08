@@ -1,239 +1,199 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Área Secreta 💖</title>
+<!DOCTYPE html>  <html lang="pt-br">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Área Secreta 💖</title>  <style>  
+body {  
+  margin: 0;  
+  font-family: Arial, sans-serif;  
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  min-height: 100vh;  
+  padding: 40px 0;  
+  text-align: center;  
+  color: white;  
+  overflow-y: auto;  
+}  
+  
+.container {  
+  background: rgba(255, 255, 255, 0.15);  
+  padding: 30px;  
+  border-radius: 20px;  
+  backdrop-filter: blur(10px);  
+  width: 90%;  
+  max-width: 400px;  
+}  
+  
+input {  
+  padding: 10px;  
+  border-radius: 10px;  
+  border: none;  
+  width: 100%;  
+  margin-bottom: 15px;  
+}  
+  
+button {  
+  padding: 10px 20px;  
+  border: none;  
+  border-radius: 20px;  
+  background-color: white;  
+  color: #ff1493;  
+  font-weight: bold;  
+  cursor: pointer;  
+  margin: 5px;  
+  transition: all 0.3s ease;  
+}  
+  
+button:hover {  
+  transform: scale(1.05);  
+}  
+  
+.hidden {  
+  display: none;  
+}  
+  
+#carta {  
+  background: rgba(255,255,255,0.2);  
+  padding: 20px;  
+  border-radius: 15px;  
+  margin-top: 20px;  
+  text-align: left;  
+  line-height: 1.6;  
+}  
+  
+/* ===== EFEITO GELATINA ===== */  
+@keyframes gelatina {  
+  0%   { transform: scale(1); }  
+  25%  { transform: scale(1.2, 0.8); }  
+  50%  { transform: scale(0.8, 1.2); }  
+  75%  { transform: scale(1.1, 0.9); }  
+  100% { transform: scale(1); }  
+}  
+  
+.gelatina {  
+  animation: gelatina 0.5s ease;  
+}  
+  
+/* ===== CORAÇÕES SUBINDO ===== */  
+.coracao {  
+  position: fixed;  
+  bottom: 0;  
+  font-size: 20px;  
+  animation: subir 3s linear forwards;  
+}  
+  
+@keyframes subir {  
+  0% { transform: translateY(0); opacity: 1; }  
+  100% { transform: translateY(-100vh); opacity: 0; }  
+}  
+</style>  </head>  <body>  <div class="container" id="login">  
+  <h2>Digite nossa senha 💌</h2>  
+  <input type="password" id="password" placeholder="Nossa senha...">  
+  <button onclick="checkPassword()">Entrar</button>  
+</div>  <div class="container hidden" id="content">  
+  <h1>Feliz Dia dos Namorados 💖</h1>  
+  <p>Você é o amor da minha vida.</p>  <button onclick="showMessage()">Nossa História</button>
+<button onclick="window.location.href='fotos.html'">
+Por que eu te amo 💕
+</button>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 40px 0;
-  text-align: center;
-  color: white;
-  overflow-y: auto;
-}
+  <p id="extra" style="margin-top:15px;"></p>  <button id="btnCarta" onclick="mostrarCarta()">Ler minha carta 💌</button>
 
-.container {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  width: 90%;
-  max-width: 400px;
-}
-
-input {
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background-color: white;
-  color: #ff1493;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 5px;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-.hidden {
-  display: none;
-}
-
-#carta {
-  background: rgba(255,255,255,0.2);
-  padding: 20px;
-  border-radius: 15px;
-  margin-top: 20px;
-  text-align: left;
-  line-height: 1.6;
-}
-
-/* GELATINA */
-@keyframes gelatina {
-  0%   { transform: scale(1); }
-  25%  { transform: scale(1.2, 0.8); }
-  50%  { transform: scale(0.8, 1.2); }
-  75%  { transform: scale(1.1, 0.9); }
-  100% { transform: scale(1); }
-}
-
-.gelatina {
-  animation: gelatina 0.5s ease;
-}
-
-/* CORAÇÕES */
-.coracao {
-  position: fixed;
-  bottom: 0;
-  font-size: 20px;
-  animation: subir 3s linear forwards;
-}
-
-@keyframes subir {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-100vh); opacity: 0; }
-}
-
-/* TELA DE TOQUE */
-#startScreen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 22px;
-  z-index: 999;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container" id="login">
-  <h2>Digite nossa senha 💌</h2>
-  <input type="password" id="password" placeholder="Nossa senha...">
-  <button onclick="checkPassword()">Entrar</button>
-</div>
-
-<div class="container hidden" id="content">
-  <h1>Feliz Dia dos Namorados 💖</h1>
-  <p>Você é o amor da minha vida.</p>
-
-  <button onclick="showMessage()">Nossa História</button>
-  <button onclick="window.location.href='fotos.html'">
-    Por que eu te amo 💕
-  </button>
-
-  <p id="extra" style="margin-top:15px;"></p>
-
-  <button id="btnCarta" onclick="mostrarCarta()">Ler minha carta 💌</button>
-  <div id="carta" class="hidden"></div>
-
-  <audio id="music" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-  </audio>
-</div>
-
-<!-- começa escondida -->
-<div id="startScreen" class="hidden">
-  Toque para entrar 💖
-</div>
-
-<script>
-
-const correctPassword = "idchlitalaiwyigasomf";
-
-/* ========= CONTROLE AO ABRIR ========= */
+  <div id="carta" class="hidden"></div>    <audio id="music" loop>  
+    <source src="musica.mp3" type="audio/mpeg">  
+  </audio>  
+</div>  
+  
+  </div>  <script>  
+  // Se já estiver logado, mostrar conteúdo direto
 window.onload = function() {
-
-  const logado = localStorage.getItem("logado");
-
-  if (logado === "sim") {
+  if (localStorage.getItem("logado") === "sim") {
     document.getElementById("login").classList.add("hidden");
     document.getElementById("content").classList.remove("hidden");
-
-    const start = document.getElementById("startScreen");
-    start.classList.remove("hidden");
-
-    start.onclick = function() {
-      start.classList.add("hidden");
-      document.getElementById("music").play();
-    };
-  }
-};
-
-/* ========= LOGIN ========= */
-function checkPassword() {
-  const input = document.getElementById("password").value;
-
-  if (input === correctPassword) {
-
-    localStorage.setItem("logado", "sim");
-
-    document.getElementById("login").classList.add("hidden");
-    document.getElementById("content").classList.remove("hidden");
-
     document.getElementById("music").play();
-
-  } else {
-    alert("Senha incorreta 😠");
   }
 }
-
-/* ========= HISTÓRIA ========= */
-function showMessage() {
-  const extra = document.getElementById("extra");
-  extra.innerText = extra.innerText !== "" 
-    ? "" 
-    : "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";
-}
-
-/* ========= CARTA ========= */
-function mostrarCarta() {
-  const carta = document.getElementById("carta");
-  const botao = document.getElementById("btnCarta");
-
-  botao.classList.add("gelatina");
-  setTimeout(() => botao.classList.remove("gelatina"), 500);
-
-  if (!carta.classList.contains("hidden")) {
-    carta.classList.add("hidden");
-    carta.innerHTML = "";
-  } else {
-    carta.classList.remove("hidden");
-    carta.innerHTML = `
-      <h2>Minha carta para você 💖</h2>
-      <p>Oi meu amor! Pensei em fazer algo mais especial nesse ano, pois é finalmente o ano que poderemos ficar juntos. As coisas até aqui foram muito caóticas, e ter você na minha vida adicionou um pouco mais de drama e de amor pra todas as minhas histórias. Eu não canso de te dizer que eu te amo, apesar de você se cansar de ouvir hihi 💕
-Continuo perdidinha de amores pelo menininho inocente que não sabia que iria acabar namorando com uma porca selvagem toda estranhinha da sala dele hihi 
-A cada dia você me enche de mais e mais orgulho, sou grata por poder acompanhar a sua evolução, pois você é um homem maravilhoso. Se Deus quiser será pai dos meus filhos, e eu vou orar MUITO por isso kkkkk tanto quanto eu orei para você me amar (e minha reza braba funciona hein?? Quem tem fé tem tudoo!!) 
-Você me ajudou em um momento que eu não tinha nem a mim mesma, e fez coisas por mim que ninguém nunca jamais fez. Quero poder retribuir todo o carinho que você me deu nestes últimos três anos pelo resto da vida que compartilharemos lado a lado e pela eternidade que minha alma ficará enchendo o saco da sua kkkkkkk
-Você é o menino que fez eu me sentir acolhida em todas as calls, em todas as vezes que você se lembrou de mim nas pequenas e grandes coisas, em todos os reels que você me mandou de madrugada porque viu um vídeo e pensou em mim...
-Você é o motivo da minha vitória todos os dias, pois eu me inspiro em você! Sempre foi mais inteligente que eu, mais atlético que eu, mais ativo que eu em tudo! E isso sempre fez eu querer inconscientemente evoluir em todas essas coisas para não ficar para trás. Quero te acompanhar pelo resto da vida, meu amor. Essa é a jornada que eu escolherei todos os dias em que eu te tiver, mesmo apesar das briguinhas bestas e frequentes que temos.</p>
-      <p>Eu amo você.</p>
-    `;
-    soltarCoracoes();
-  }
-}
-
-/* ========= CORAÇÕES ========= */
-function soltarCoracoes() {
-  for (let i = 0; i < 12; i++) {
-    const coracao = document.createElement("div");
-    coracao.innerHTML = "💕";
-    coracao.classList.add("coracao");
-
-    coracao.style.left = Math.random() * 100 + "vw";
-    coracao.style.fontSize = (20 + Math.random() * 20) + "px";
-
-    document.body.appendChild(coracao);
-    setTimeout(() => coracao.remove(), 3000);
-  }
-}
-
-</script>
-
-</body>
+const correctPassword = "idchlitalaiwyigasomf";  
+  
+function checkPassword() {  
+  const input = document.getElementById("password").value;  
+  
+  if (input === correctPassword) {  
+  
+    // SALVA QUE ELE ESTÁ LOGADO  
+    localStorage.setItem("logado", "sim");  
+  
+    document.getElementById("login").classList.add("hidden");  
+    document.getElementById("content").classList.remove("hidden");  
+    document.getElementById("music").play();  
+  
+  } else {  
+    alert("Senha incorreta 😠");  
+  }  
+}  
+  
+function showMessage() {  
+  const extra = document.getElementById("extra");  
+  extra.innerText = extra.innerText !== ""   
+    ? ""   
+    : "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";  
+}  
+  
+function showReasons() {  
+  const extra = document.getElementById("extra");  
+  extra.innerText = extra.innerText !== ""   
+    ? ""   
+    : "Eu te amo pelo seu sorriso, pelo seu carinho, pelo seu jeito único e por ser exatamente quem você é.";  
+}  
+  
+/* ===== CARTA COM GELATINA + CORAÇÕES ===== */  
+function mostrarCarta() {  
+  const carta = document.getElementById("carta");  
+  const botao = document.getElementById("btnCarta");  
+  
+  botao.classList.add("gelatina");  
+  setTimeout(() => botao.classList.remove("gelatina"), 500);  
+  
+  if (!carta.classList.contains("hidden")) {  
+    carta.classList.add("hidden");  
+    carta.innerHTML = "";  
+  } else {  
+    carta.classList.remove("hidden");  
+    carta.innerHTML = `  
+      <h2>Minha carta para você 💖</h2>  
+      <p>Oi meu amor! Pensei em fazer algo mais especial nesse ano, pois é finalmente o ano que poderemos ficar juntos. As coisas até aqui foram muito caóticas, e ter você na minha vida adicionou um pouco mais de drama e de amor pra todas as minhas histórias. Eu não canso de te dizer que eu te amo, apesar de você se cansar de ouvir hihi 💕  
+Continuo perdidinha de amores pelo menininho inocente que não sabia que iria acabar namorando com uma porca selvagem toda estranhinha da sala dele hihi   
+A cada dia você me enche de mais e mais orgulho, sou grata por poder acompanhar a sua evolução, pois você é um homem maravilhoso. Se Deus quiser será pai dos meus filhos, e eu vou orar MUITO por isso kkkkk tanto quanto eu orei para você me amar (e minha reza braba funciona hein?? Quem tem fé tem tudoo!!)   
+Você me ajudou em um momento que eu não tinha nem a mim mesma, e fez coisas por mim que ninguém nunca jamais fez. Quero poder retribuir todo o carinho que você me deu nestes últimos três anos pelo resto da vida que compartilharemos lado a lado e pela eternidade que minha alma ficará enchendo o saco da sua kkkkkkk  
+Você é o menino que fez eu me sentir acolhida em todas as calls, em todas as vezes que você se lembrou de mim nas pequenas e grandes coisas, em todos os reels que você me mandou de madrugada porque viu um vídeo e pensou em mim...  
+Você é o motivo da minha vitória todos os dias, pois eu me inspiro em você! Sempre foi mais inteligente que eu, mais atlético que eu, mais ativo que eu em tudo! E isso sempre fez eu querer inconscientemente evoluir em todas essas coisas para não ficar para trás. Quero te acompanhar pelo resto da vida, meu amor. Essa é a jornada que eu escolherei todos os dias em que eu te tiver, mesmo apesar das briguinhas bestas e frequentes que temos.</p>  
+      <p>Eu amo você.</p>  
+    `;  
+    soltarCoracoes();  
+  }  
+}  
+  
+function soltarCoracoes() {  
+  for (let i = 0; i < 12; i++) {  
+    const coracao = document.createElement("div");  
+    coracao.innerHTML = "💖";  
+    coracao.classList.add("coracao");  
+  
+    coracao.style.left = Math.random() * 100 + "vw";  
+    coracao.style.fontSize = (20 + Math.random() * 20) + "px";  
+  
+    document.body.appendChild(coracao);  
+  
+    setTimeout(() => coracao.remove(), 3000);  
+  }  
+}  
+  
+ function iniciarSite() {  
+  document.getElementById("startScreen").style.display = "none";  
+  document.getElementById("music").play();  
+}  
+  
+</script>  </body>  
 </html>
