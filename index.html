@@ -93,11 +93,23 @@ button:hover {
   }
 
   function showMessage() {
-    document.getElementById("extra").innerText = "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";
+  const extra = document.getElementById("extra");
+
+  if (extra.innerText !== "") {
+    extra.innerText = "";
+  } else {
+    extra.innerText = "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";
+  }
   }
 
   function showReasons() {
-    document.getElementById("extra").innerText = "Eu te amo pelo seu sorriso, pelo seu carinho, pelo seu jeito único e por ser exatamente quem você é.";
+  const extra = document.getElementById("extra");
+
+  if (extra.innerText !== "") {
+    extra.innerText = "";
+  } else {
+    extra.innerText = "Eu te amo pelo seu sorriso, pelo seu carinho, pelo seu jeito único e por ser exatamente quem você é.";
+  }
   }
 
   function mostrarCarta() {
