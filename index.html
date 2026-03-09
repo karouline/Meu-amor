@@ -75,6 +75,23 @@ button:hover {
 .gelatina {  
   animation: gelatina 0.5s ease;  
 }  
+
+  .fundo-coracao {
+  position: fixed;
+  top: -10px;
+  font-size: 14px;
+  opacity: 0.2;
+  animation: cair linear infinite;
+}
+
+@keyframes cair {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}
   
 /* ===== CORAÇÕES SUBINDO ===== */  
 .coracao {
@@ -173,7 +190,23 @@ function checkPassword() {
     alert("Senha incorreta 😠");
   }
 }
-  
+
+function criarFundoMagico() {
+  setInterval(() => {
+    const c = document.createElement("div");
+    c.innerHTML = "💗";
+    c.classList.add("fundo-coracao");
+
+    c.style.left = Math.random() * window.innerWidth + "px";
+    c.style.animationDuration = 5 + Math.random() * 5 + "s";
+
+    document.body.appendChild(c);
+
+    setTimeout(() => c.remove(), 10000);
+  }, 800);
+}
+
+criarFundoMagico();
   
 function showMessage() {  
   const extra = document.getElementById("extra");  
