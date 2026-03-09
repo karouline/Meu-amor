@@ -305,6 +305,16 @@ function clicouSim() {
 
   etapa++;
 }
+
+document.querySelectorAll("button").forEach(botao => {
+  botao.addEventListener("click", function () {
+    botao.classList.add("gelatina");
+
+    setTimeout(() => {
+      botao.classList.remove("gelatina");
+    }, 500);
+  });
+});
     
 </script>  </body>  
 </html>
