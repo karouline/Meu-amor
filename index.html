@@ -268,7 +268,21 @@ Você é o motivo da minha vitória todos os dias, pois eu me inspiro em você! 
     soltarCoracoes();  
   }  
 }  
-  
+
+////soltar coracoes////
+document.addEventListener("click", function(e) {
+  const coracao = document.createElement("div");
+  coracao.innerHTML = "💖";
+  coracao.style.position = "fixed";
+  coracao.style.left = e.clientX + "px";
+  coracao.style.top = e.clientY + "px";
+  coracao.style.pointerEvents = "none";
+  coracao.style.animation = "flutuar 2s ease-out forwards";
+
+  document.body.appendChild(coracao);
+  setTimeout(() => coracao.remove(), 2000);
+});
+    
 function soltarCoracoes() {
   for (let i = 0; i < 20; i++) {
     const coracao = document.createElement("div");
