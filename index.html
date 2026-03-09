@@ -93,11 +93,10 @@ button:hover {
   <input type="password" id="password" placeholder="Nossa senha...">  
   <button onclick="checkPassword()">Entrar</button>  
 </div>  <div class="container hidden" id="content">  
-  <h1>Feliz Dia dos Namorados 💖</h1>  
-  <p>Você é o amor da minha vida.</p>  <button onclick="showMessage()">Nossa História</button>
-<button onclick="abrirFotos()">
-Por que eu te amo 💕
-</button>
+  <h1>Feliz aniversário, meu amor 🎂💖</h1>  
+  <p>Você é o amor da minha vida.</p>  
+<button onclick="showMessage()">Nossa História</button>
+<button onclick="abrirFotos()">Nossa trajetória 💕</button>
 
   <p id="extra" style="margin-top:15px;"></p>  <button id="btnCarta" onclick="mostrarCarta()">Ler minha carta 💌</button>
 
@@ -112,7 +111,7 @@ Por que eu te amo 💕
   </div>
 
   <div class="container hidden" id="perguntaAmor">
-  <h2>Você me ama mesmo?? 😼</h2>
+  <h2>Você me ama mesmo??</h2>
 
   <button id="btnSim" onclick="clicouSim()">Sim 💕</button>
   <button id="btnNao" onmousemove="fugirNao()">Não 😡</button>
@@ -259,9 +258,9 @@ function clicouSim() {
   const btn = document.getElementById("btnSim");
 
   if (etapa === 0) {
-    btn.innerText = "Você tem certeza? 🤨";
+    btn.innerText = "Você tem certeza?";
   } else if (etapa === 1) {
-    btn.innerText = "Tem certeza mesmo mesmo? 😳";
+    btn.innerText = "Mas assim... Você tem certeza mesmo mesmo?";
   } else if (etapa === 2) {
     btn.innerText = "Tá… você me ama hihi 💕";
 
