@@ -77,17 +77,29 @@ button:hover {
 }  
   
 /* ===== CORAÇÕES SUBINDO ===== */  
-.coracao {  
-  position: fixed;  
-  bottom: 0;  
-  font-size: 20px;  
-  animation: subir 3s linear forwards;  
-}  
+.coracao {
+  position: fixed;
+  bottom: -20px;
+  pointer-events: none;
+  animation: flutuar ease-out forwards;
+}
+
+@keyframes flutuar {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-40vh) translateX(20px) rotate(15deg);
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(-20px) rotate(-15deg);
+    opacity: 0;
+  }
+}
   
-@keyframes subir {  
-  0% { transform: translateY(0); opacity: 1; }  
-  100% { transform: translateY(-100vh); opacity: 0; }  
-}  
 </style>  </head>  <body>  <div class="container" id="login">  
   <h2>Digite nossa senha 💌</h2>  
   <input type="password" id="password" placeholder="Nossa senha...">  
@@ -204,20 +216,26 @@ Você é o motivo da minha vitória todos os dias, pois eu me inspiro em você! 
   }  
 }  
   
-function soltarCoracoes() {  
-  for (let i = 0; i < 12; i++) {  
-    const coracao = document.createElement("div");  
-    coracao.innerHTML = "💖";  
-    coracao.classList.add("coracao");  
-  
-    coracao.style.left = Math.random() * 100 + "vw";  
-    coracao.style.fontSize = (20 + Math.random() * 20) + "px";  
-  
-    document.body.appendChild(coracao);  
-  
-    setTimeout(() => coracao.remove(), 3000);  
-  }  
-}  
+function soltarCoracoes() {
+  for (let i = 0; i < 20; i++) {
+    const coracao = document.createElement("div");
+
+    coracao.innerHTML = "💖";
+    coracao.classList.add("coracao");
+
+    const tamanho = 15 + Math.random() * 30;
+    const duracao = 3 + Math.random() * 3;
+    const posicao = Math.random() * window.innerWidth;
+
+    coracao.style.left = posicao + "px";
+    coracao.style.fontSize = tamanho + "px";
+    coracao.style.animationDuration = duracao + "s";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(() => coracao.remove(), duracao * 1000);
+  }
+}
 
   function abrirFotos() {
   document.getElementById("content").classList.add("hidden");
