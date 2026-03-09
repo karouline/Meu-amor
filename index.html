@@ -115,7 +115,7 @@ Por que eu te amo 💕
   <h2>Você me ama mesmo?? 😼</h2>
 
   <button id="btnSim" onclick="clicouSim()">Sim 💕</button>
-  <button id="btnNao" onmouseover="fugirNao()">Não 😡</button>
+  <button id="btnNao" onmousemove="fugirNao()">Não 😡</button>
   </div>
 
 <div class="container hidden" id="paginaFotos">
@@ -247,9 +247,9 @@ function entrarDireto() {
 function fugirNao() {
   const botao = document.getElementById("btnNao");
 
-  botao.style.position = "absolute";
-  botao.style.top = Math.random() * 80 + "%";
-  botao.style.left = Math.random() * 80 + "%";
+  botao.style.position = "fixed";
+  botao.style.top = Math.random() * (window.innerHeight - 50) + "px";
+  botao.style.left = Math.random() * (window.innerWidth - 100) + "px";
 }
 
 
