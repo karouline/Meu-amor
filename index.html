@@ -137,22 +137,26 @@ button:hover {
   }
 }
 
-/* ===== AJUSTE MOBILE PREMIUM ===== */
+
+
+#content button {
+  width: 80%;
+  align-self: center;
+}
+  
+</st/* ===== MOBILE BONITO E CENTRALIZADO ===== */
 @media (max-width: 480px) {
 
   body {
-    align-items: center; /* volta a centralizar */
     padding: 20px;
+    min-height: 100vh;
   }
 
   .container {
     width: 100%;
     max-width: 100%;
-    height: auto;
+    margin: 0 auto;
     padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
   }
 
   #content h1 {
@@ -166,20 +170,14 @@ button:hover {
   }
 
   #content button {
-    width: 100%;
+    display: block;
+    width: 85%;
+    margin: 12px auto;
     padding: 14px;
-    margin: 10px 0;
     font-size: 16px;
   }
 
-}
-
-#content button {
-  width: 80%;
-  align-self: center;
-}
-  
-</style>  
+}yle>  
   
 </head>  
   
