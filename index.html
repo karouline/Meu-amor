@@ -137,39 +137,46 @@ button:hover {
   }
 }
 
-/* ====== AJUSTE ESPECIAL PARA CELULAR ====== */
+/* ===== AJUSTE MOBILE PREMIUM ===== */
 @media (max-width: 480px) {
 
   body {
-    align-items: flex-start;
-    padding-top: 40px;
+    align-items: center; /* volta a centralizar */
+    padding: 20px;
   }
 
   .container {
-    height: 85vh;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 30px 20px;
   }
 
-  .container h1,
-  .container h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
+  #content h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
   }
 
-  .container p {
-    margin-bottom: 35px;
-    font-size: 16px;
+  #content p {
+    font-size: 15px;
+    margin-bottom: 25px;
   }
 
-  .container button {
-    margin: 12px 0;
+  #content button {
+    width: 100%;
     padding: 14px;
+    margin: 10px 0;
     font-size: 16px;
   }
 
+}
+
+#content button {
+  width: 80%;
+  align-self: center;
 }
   
 </style>  
