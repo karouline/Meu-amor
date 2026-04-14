@@ -321,10 +321,12 @@ button:hover {
   to { transform: scale(1); opacity: 1; }
 }
 
+// ===== GALERIA COM FOTO CENTRAL =====
 let fotoAtual = 0;
-const fotos = document.querySelectorAll(".foto");
 
 function atualizarGaleria(index) {
+  const fotos = document.querySelectorAll(".foto");
+
   fotos.forEach(f => f.classList.remove("ativa"));
 
   fotoAtual = (index + fotos.length) % fotos.length;
@@ -332,8 +334,14 @@ function atualizarGaleria(index) {
   fotos[fotoAtual].classList.add("ativa");
 }
 
-document.querySelector(".galeria").addEventListener("click", () => {
-  atualizarGaleria(fotoAtual + 1);
+document.addEventListener("DOMContentLoaded", () => {
+  const galeria = document.querySelector(".galeria");
+
+  if (galeria) {
+    galeria.addEventListener("click", () => {
+      atualizarGaleria(fotoAtual + 1);
+    });
+  }
 });
 
   
