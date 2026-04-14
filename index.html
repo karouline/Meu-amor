@@ -226,10 +226,14 @@ button:hover {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.7);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 999;
+}
+
+#overlay.show {
+  display: flex;
 }
 
 #overlay img {
@@ -526,12 +530,12 @@ document.addEventListener("click", function(e) {
     const imgAmpliada = document.getElementById("imgAmpliada");
 
     imgAmpliada.src = e.target.src;
-    overlay.classList.remove("hidden");
+    overlay.classList.add("show");
   }
 
   // Fechar ao clicar fora
   if (e.target.id === "overlay") {
-    e.target.classList.add("hidden");
+    e.target.classList.remove("show");
   }
 });
     
