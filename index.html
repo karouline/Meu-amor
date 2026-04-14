@@ -321,6 +321,21 @@ button:hover {
   to { transform: scale(1); opacity: 1; }
 }
 
+let fotoAtual = 0;
+const fotos = document.querySelectorAll(".foto");
+
+function atualizarGaleria(index) {
+  fotos.forEach(f => f.classList.remove("ativa"));
+
+  fotoAtual = (index + fotos.length) % fotos.length;
+
+  fotos[fotoAtual].classList.add("ativa");
+}
+
+document.querySelector(".galeria").addEventListener("click", () => {
+  atualizarGaleria(fotoAtual + 1);
+});
+
   
 </style>  
   
