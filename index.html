@@ -238,8 +238,46 @@ button:hover {
 
 .galeria {
   display: flex;
-  gap: 12px;
-  scroll-snap-type: x mandatory;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  overflow: hidden;
+}
+
+.foto {
+  transition: 0.4s ease;
+  opacity: 0.5;
+  transform: scale(0.8);
+  text-align: center;
+}
+
+.foto img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: 0.4s ease;
+}
+
+.foto .legenda {
+  opacity: 0;
+  margin-top: 8px;
+  font-size: 14px;
+  transition: opacity 0.4s ease;
+}
+
+.foto.ativa {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.foto.ativa img {
+  width: 200px;
+  height: 200px;
+}
+
+.foto.ativa .legenda {
+  opacity: 1;
 }
 
 .galeria img {
