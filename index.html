@@ -177,6 +177,69 @@ button:hover {
     font-size: 16px;
   }
 }
+
+/* ===== GALERIA BASE ===== */
+.galeria-wrapper {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.galeria {
+  display: flex;
+  gap: 12px;
+  scroll-snap-type: x mandatory;
+}
+
+.galeria img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 15px;
+  cursor: pointer;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== DESKTOP: vira grade ===== */
+@media (min-width: 768px) {
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .galeria img {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+/* ===== OVERLAY DE FOTO AMPLIADA ===== */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#overlay img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 20px;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
   
 </style>  
   
@@ -217,14 +280,29 @@ button:hover {
   <button id="btnNao" onmousemove="fugirNao()">Não 😡</button>
   </div>
 
+/* ===== FOTOS ===== */
+  
 <div class="container hidden" id="paginaFotos">
   <h1>Nós dois 💕</h1>
 
-  <img src="foto1.jpg" style="width:100%; border-radius:20px; margin-bottom:15px;">
-  <img src="foto2.jpg" style="width:100%; border-radius:20px; margin-bottom:15px;">
+  <div class="galeria-wrapper">
+    <div class="galeria">
+      <img src="foto1.jpg">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+      <img src="foto4.jpg">
+      <img src="foto5.jpg">
+    </div>
+  </div>
 
   <button onclick="voltarPrincipal()">Voltar 💌</button>
-</div> 
+</div>
+
+<!-- Overlay para ampliar -->
+<div id="overlay" class="hidden">
+  <img id="imgAmpliada">
+</div>
+  
   <script>  
     
   window.onload = function() {
@@ -435,6 +513,23 @@ document.querySelectorAll("button").forEach(botao => {
       botao.classList.remove("gelatina");
     }, 500);
   });
+});
+
+
+    // Clique para ampliar
+document.addEventListener("click", function(e) {
+  if (e.target.matches(".galeria img")) {
+    const overlay = document.getElementById("overlay");
+    const imgAmpliada = document.getElementById("imgAmpliada");
+
+    imgAmpliada.src = e.target.src;
+    overlay.classList.remove("hidden");
+  }
+
+  // Fechar ao clicar fora
+  if (e.target.id === "overlay") {
+    e.target.classList.add("hidden");
+  }
 });
     
 </script>  
