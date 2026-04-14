@@ -230,68 +230,48 @@ button:hover {
   }
 }
 
-/* ===== GALERIA BASE ===== */
-.galeria-wrapper {
-  overflow-x: auto;
-  margin: 20px 0;
-}
-
+/* ===== CARROSSEL DESLIZANTE BONITO ===== */
 .galeria {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  overflow: hidden;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+
+.galeria::-webkit-scrollbar {
+  display: none;
 }
 
 .foto {
-  transition: 0.4s ease;
-  opacity: 0.5;
-  transform: scale(0.8);
+  flex: 0 0 80%;
+  scroll-snap-align: center;
   text-align: center;
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: 0.4s ease;
 }
 
 .foto img {
-  width: 160px;
-  height: 160px;
+  width: 100%;
+  height: 250px;
   object-fit: cover;
-  border-radius: 15px;
-  transition: 0.4s ease;
+  border-radius: 20px;
 }
 
 .foto .legenda {
+  margin-top: 10px;
   opacity: 0;
-  margin-top: 8px;
-  font-size: 14px;
   transition: opacity 0.4s ease;
 }
 
 .foto.ativa {
   opacity: 1;
-  transform: scale(1.1);
-}
-
-.foto.ativa img {
-  width: 200px;
-  height: 200px;
+  transform: scale(1);
 }
 
 .foto.ativa .legenda {
   opacity: 1;
-}
-
-.galeria img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 15px;
-  cursor: pointer;
-  scroll-snap-align: center;
-  transition: transform 0.3s ease;
-}
-
-.galeria img:hover {
-  transform: scale(1.05);
 }
 
 /* ===== OVERLAY DE FOTO AMPLIADA ===== */
@@ -627,28 +607,20 @@ document.addEventListener("click", function(e) {
   }
 });
 
-// ===== GALERIA FUNCIONAL =====
-let fotoAtual = 0;
-
-function atualizarGaleria(index) {
+// ===== CARROSSEL AUTOMÁTICO PELO SCROLL =====
+document.addEventListener("scroll", function () {
   const fotos = document.querySelectorAll(".foto");
 
-  fotos.forEach(f => f.classList.remove("ativa"));
+  fotos.forEach(foto => {
+    const rect = foto.getBoundingClientRect();
+    const meioTela = window.innerWidth / 2;
 
-  fotoAtual = (index + fotos.length) % fotos.length;
-
-  fotos[fotoAtual].classList.add("ativa");
-}
-
-// clique para trocar
-document.addEventListener("DOMContentLoaded", () => {
-  const galeria = document.querySelector(".galeria");
-
-  if (galeria) {
-    galeria.addEventListener("click", () => {
-      atualizarGaleria(fotoAtual + 1);
-    });
-  }
+    if (rect.left < meioTela && rect.right > meioTela) {
+      foto.classList.add("ativa");
+    } else {
+      foto.classList.remove("ativa");
+    }
+  });
 });
     
 </script>  
