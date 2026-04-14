@@ -28,11 +28,50 @@ body {
 
 .carousel {
   position: relative;
-  width: 100%; /* não 100vw */
-  max-width: 100%;
-  margin: 20px 0;
+  width: 100%;
   overflow: hidden;
 }
+
+.slides {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.slide {
+  transition: 0.4s ease;
+  opacity: 0.5;
+  transform: scale(0.8);
+  text-align: center;
+}
+
+.slide img {
+  width: 180px;
+  border-radius: 15px;
+  transition: 0.4s ease;
+}
+
+.slide .legenda {
+  opacity: 0;
+  margin-top: 10px;
+  transition: opacity 0.4s ease;
+  font-size: 14px;
+}
+
+.slide.ativo {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.slide.ativo img {
+  width: 220px;
+}
+
+.slide.ativo .legenda {
+  opacity: 1;
+}
+
   .carousel img {
   width: 100%;
   height: auto;
@@ -297,6 +336,32 @@ button:hover {
   <button id="btnNao" onmousemove="fugirNao()">Não 😡</button>
   </div>
 
+
+
+<div class="carousel">
+  <button class="prev" onclick="mudarSlide(-1)">❮</button>
+
+  <div class="slides">
+    <div class="slide ativo">
+      <img src="foto1.jpg">
+      <p class="legenda">Nosso primeiro encontro 💕</p>
+    </div>
+
+    <div class="slide">
+      <img src="foto2.jpg">
+      <p class="legenda">O dia mais feliz do mundo</p>
+    </div>
+
+    <div class="slide">
+      <img src="foto3.jpg">
+      <p class="legenda">Eu e você contra o universo ✨</p>
+    </div>
+  </div>
+
+  <button class="next" onclick="mudarSlide(1)">❯</button>
+</div>
+
+
   
 <div class="container hidden" id="paginaFotos">
   <h1>Nós dois 💕</h1>
@@ -531,6 +596,24 @@ document.querySelectorAll("button").forEach(botao => {
   });
 });
 
+
+
+let slideAtual = 0;
+const slides = document.querySelectorAll(".slide");
+
+function mostrarSlide(index) {
+  slides.forEach(slide => slide.classList.remove("ativo"));
+
+  slideAtual = (index + slides.length) % slides.length;
+
+  slides[slideAtual].classList.add("ativo");
+}
+
+function mudarSlide(direcao) {
+  mostrarSlide(slideAtual + direcao);
+}
+
+    
 
     // Clique para ampliar
 document.addEventListener("click", function(e) {
