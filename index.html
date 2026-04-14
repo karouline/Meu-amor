@@ -8,11 +8,13 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  display: flex;
+  justify-content: center;
+  align-items: center; /* ESSA LINHA QUE FALTA */
   min-height: 100vh;
-  padding: 0 20px;
+  padding: 20px;
   text-align: center;
   color: white;
-  overflow-x: hidden;
 }
   
 .container {
@@ -22,8 +24,6 @@ body {
   backdrop-filter: blur(10px);
   width: 90%;
   max-width: 400px;
-
-  margin: 8vh auto; /* ESSA É A MÁGICA REAL */
 }
   
 input {  
