@@ -607,15 +607,18 @@ document.addEventListener("click", function(e) {
   }
 });
 
-// ===== CARROSSEL AUTOMÁTICO PELO SCROLL =====
-document.addEventListener("scroll", function () {
+// ===== CARROSSEL FUNCIONANDO DE VERDADE =====
+const galeria = document.querySelector(".galeria");
+
+galeria.addEventListener("scroll", () => {
   const fotos = document.querySelectorAll(".foto");
+  const centroGaleria = galeria.offsetLeft + galeria.offsetWidth / 2;
 
   fotos.forEach(foto => {
     const rect = foto.getBoundingClientRect();
-    const meioTela = window.innerWidth / 2;
+    const centroFoto = rect.left + rect.width / 2;
 
-    if (rect.left < meioTela && rect.right > meioTela) {
+    if (Math.abs(centroGaleria - centroFoto) < rect.width / 2) {
       foto.classList.add("ativa");
     } else {
       foto.classList.remove("ativa");
