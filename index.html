@@ -178,16 +178,6 @@ button:hover {
   }
 }
   
-#extra1, #extra2 {
-  min-height: 40px;
-  margin: 10px 0;
-  transition: all 0.3s ease;
-}
-
-#extra1, #extra2 {
-  opacity: 0;
-}
-  
 </style>  
   
 </head>  
@@ -203,10 +193,11 @@ button:hover {
   <p>Você tá ficando véinho.</p>  
 
   
-<button onclick="showHistoria()">Nossa História</button>
-<p id="extra1"></p>
-<button onclick="showTrajetoria()">Nossa trajetória 💕</button>
-<p id="extra2"></p>
+<button onclick="showMessage()">Nossa História</button>
+<button onclick="abrirFotos()">Nossa trajetória 💕</button>
+
+<p id="extra" style="margin-top:15px;"></p>
+
 <button id="btnCarta" onclick="mostrarCarta()">Ler minha carta 💌</button>
 
   <div id="carta" class="hidden"></div>    <audio id="music" loop>  
@@ -289,26 +280,12 @@ function criarFundoMagico() {
 criarFundoMagico();
 
     
-function showHistoria() {
-  const extra1 = document.getElementById("extra1");
-  const extra2 = document.getElementById("extra2");
+function showMessage() {
+  const extra = document.getElementById("extra");
 
-  extra2.innerText = ""; // limpa o outro
-
-  extra1.innerText = extra1.innerText !== ""
+  extra.innerText = extra.innerText !== ""
     ? ""
     : "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";
-}
-
-function showTrajetoria() {
-  const extra1 = document.getElementById("extra1");
-  const extra2 = document.getElementById("extra2");
-
-  extra1.innerText = ""; // limpa o outro
-
-  extra2.innerText = extra2.innerText !== ""
-    ? ""
-    : "Nossa trajetória foi cheia de risadas, chamadas de madrugada, planos e muito amor.";
 }
     
     
