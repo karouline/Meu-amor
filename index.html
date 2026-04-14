@@ -256,19 +256,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* ===== DESKTOP: vira grade ===== */
-@media (min-width: 768px) {
-  .galeria {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .galeria img {
-    width: 100%;
-    height: 180px;
-  }
-}
-
 /* ===== OVERLAY DE FOTO AMPLIADA ===== */
 #overlay {
   position: fixed;
@@ -366,14 +353,31 @@ button:hover {
 <div class="container hidden" id="paginaFotos">
   <h1>Nós dois 💕</h1>
 
-  <div class="galeria-wrapper">
-    <div class="galeria">
-      <img src="foto1.jpg">
-      <img src="foto2.jpg">
-      <img src="foto3.jpg">
-      <img src="foto4.jpg">
-      <img src="foto5.jpg">
-    </div>
+  <div class="galeria">
+  <div class="foto ativa">
+    <img src="foto1.jpg">
+    <p class="legenda">Nosso começo 💕</p>
+  </div>
+
+  <div class="foto">
+    <img src="foto2.jpg">
+    <p class="legenda">Primeira viagem ✈️</p>
+  </div>
+
+  <div class="foto">
+    <img src="foto3.jpg">
+    <p class="legenda">Você sendo lindo</p>
+  </div>
+
+  <div class="foto">
+    <img src="foto4.jpg">
+    <p class="legenda">Meu favorito 💖</p>
+  </div>
+
+  <div class="foto">
+    <img src="foto5.jpg">
+    <p class="legenda">Pra sempre nós</p>
+  </div>
   </div>
 
   <button onclick="voltarPrincipal()">Voltar 💌</button>
