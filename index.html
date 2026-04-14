@@ -176,8 +176,22 @@ button:hover {
     padding: 14px;
     font-size: 16px;
   }
-
 }
+  
+#extra1, #extra2 {
+  min-height: 40px;
+  margin: 10px 0;
+  transition: all 0.3s ease;
+}
+
+#extra1, #extra2 {
+  opacity: 0;
+}
+
+#extra1.show, #extra2.show {
+  opacity: 1;
+}
+  
 </style>  
   
 </head>  
@@ -191,10 +205,13 @@ button:hover {
 </div>  <div class="container hidden" id="content">  
   <h1>𝐹𝑒𝑙𝑖𝑧 𝑎𝑛𝑖𝑣𝑒𝑟𝑠𝑎𝑟𝑖𝑜, 𝑚𝑒𝑢 𝑎𝑚𝑜𝑟  🎂💖</h1>  
   <p>Você tá ficando véinho.</p>  
-<button onclick="showMessage()">Nossa História</button>
-<button onclick="abrirFotos()">Nossa trajetória 💕</button>
 
-  <p id="extra" style="margin-top:15px;"></p>  <button id="btnCarta" onclick="mostrarCarta()">Ler minha carta 💌</button>
+  
+<button onclick="showHistoria()">Nossa História</button>
+<p id="extra1"></p>
+<button onclick="showTrajetoria()">Nossa trajetória 💕</button>
+<p id="extra2"></p>
+<button id="btnCarta" onclick="mostrarCarta()">Ler minha carta 💌</button>
 
   <div id="carta" class="hidden"></div>    <audio id="music" loop>  
     <source src="musica.mp3" type="audio/mpeg">  
@@ -274,14 +291,31 @@ function criarFundoMagico() {
 }
 
 criarFundoMagico();
-  
-function showMessage() {  
-  const extra = document.getElementById("extra");  
-  extra.innerText = extra.innerText !== ""   
-    ? ""   
-    : "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";  
-}  
-  
+
+    
+function showHistoria() {
+  const extra1 = document.getElementById("extra1");
+  const extra2 = document.getElementById("extra2");
+
+  extra2.innerText = ""; // limpa o outro
+
+  extra1.innerText = extra1.innerText !== ""
+    ? ""
+    : "Desde o dia que te conheci, minha vida ficou mais feliz. Cada momento com você é especial.";
+}
+
+function showTrajetoria() {
+  const extra1 = document.getElementById("extra1");
+  const extra2 = document.getElementById("extra2");
+
+  extra1.innerText = ""; // limpa o outro
+
+  extra2.innerText = extra2.innerText !== ""
+    ? ""
+    : "Nossa trajetória foi cheia de risadas, chamadas de madrugada, planos e muito amor.";
+}
+    
+    
 function showReasons() {  
   const extra = document.getElementById("extra");  
   extra.innerText = extra.innerText !== ""   
