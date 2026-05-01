@@ -189,7 +189,9 @@ button:hover {
   }
 }
 
-
+#perguntaAmor {
+  position: relative;
+}
 
 #content button {
   width: 80%;
@@ -867,17 +869,17 @@ function entrarDireto() {
 
 function fugirNao() {
   const botao = document.getElementById("btnNao");
+  const container = document.getElementById("perguntaAmor");
+
+  const rect = container.getBoundingClientRect();
 
   const larguraBotao = botao.offsetWidth;
   const alturaBotao = botao.offsetHeight;
 
-  const larguraTela = window.innerWidth;
-  const alturaTela = window.innerHeight;
+  const novaPosX = Math.random() * (rect.width - larguraBotao);
+  const novaPosY = Math.random() * (rect.height - alturaBotao);
 
-  const novaPosX = Math.random() * (larguraTela - larguraBotao);
-  const novaPosY = Math.random() * (alturaTela - alturaBotao);
-
-  botao.style.position = "fixed";
+  botao.style.position = "absolute";
   botao.style.left = novaPosX + "px";
   botao.style.top = novaPosY + "px";
 }
