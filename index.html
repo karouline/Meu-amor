@@ -341,6 +341,12 @@ button:hover {
   <button onclick="entrarDireto()">Entrar 💖</button>
   </div>
 
+  <audio id="audioCarta" src="minha.mp3"></audio>
+
+<button id="botaoSecreto" style="display:none;" onclick="mostrarVideo()">
+  💖 Ver surpresa final
+</button>
+
   <div class="container hidden" id="perguntaAmor">
   <h2>Você me ama mesmo??</h2>
 
@@ -841,10 +847,7 @@ document.addEventListener("click", () => {
     audioIniciado = true;
   }
 });
-<audio id="audioCarta" src="minha.mp3"></audio>
-<button id="botaoSecreto" style="display:none;" onclick="mostrarVideo()">
-  💖 Ver surpresa final
-</button>
+
 window.addEventListener("scroll", () => {
   const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
   const scrollAtual = window.scrollY;
