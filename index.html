@@ -785,19 +785,23 @@ function showReasons() {
 }  
   
 /* ===== CARTA COM GELATINA + CORAÇÕES ===== */  
-function mostrarCarta() {  
-  const carta = document.getElementById("carta");  
-  const botao = document.getElementById("btnCarta");  
-  
-  botao.classList.add("gelatina");  
-  setTimeout(() => botao.classList.remove("gelatina"), 500);  
-  
-  if (!carta.classList.contains("hidden")) {  
-    carta.classList.add("hidden");  
-    carta.innerHTML = "";  
-  } else {  
-    carta.classList.remove("hidden");  
-    carta.innerHTML = `  
+function mostrarCarta() {
+  const carta = document.getElementById("carta");
+  const botao = document.getElementById("btnCarta");
+  const audio = document.getElementById("audioCarta");
+
+  botao.classList.add("gelatina");
+  setTimeout(() => botao.classList.remove("gelatina"), 500);
+
+  if (!carta.classList.contains("hidden")) {
+    carta.classList.add("hidden");
+    carta.innerHTML = "";
+    audio.pause();
+    audio.currentTime = 0;
+  } else {
+    carta.classList.remove("hidden");
+
+    carta.innerHTML = `
       <h2>Minha carta para você 💖</h2>  
       <p>Oi meu amor! Pensei em fazer algo mais especial nesse ano, pois é finalmente o ano que poderemos ficar juntos. As coisas até aqui foram muito caóticas, e ter você na minha vida adicionou um pouco mais de drama e de amor pra todas as minhas histórias. Eu não canso de te dizer que eu te amo, apesar de você se cansar de ouvir hihi 💕  
 Continuo perdidinha de amores pelo menininho inocente que não sabia que iria acabar namorando com uma porca selvagem toda estranhinha da sala dele hihi   
@@ -807,9 +811,24 @@ Você é o menino que fez eu me sentir acolhida em todas as calls, em todas as v
 Você é o motivo da minha vitória todos os dias, pois eu me inspiro em você! Sempre foi mais inteligente que eu, mais atlético que eu, mais ativo que eu em tudo! E isso sempre fez eu querer inconscientemente evoluir em todas essas coisas para não ficar para trás. Quero te acompanhar pelo resto da vida, meu amor. Essa é a jornada que eu escolherei todos os dias em que eu te tiver, mesmo apesar das briguinhas bestas e frequentes que temos.</p>  
       <p>Eu amo você.</p>  
     `;  
-    soltarCoracoes();  
-  }  
-}  
+
+    audio.volume = 0;
+    audio.play();
+
+    // fade-in fofinho 🥺
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 0.8) {
+        vol += 0.02;
+        audio.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+
+    soltarCoracoes();
+  }
+}
 
 ////cartinha audio////
 let audioIniciado = false;
