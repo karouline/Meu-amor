@@ -720,6 +720,14 @@ button:hover {
 </div>
   
   <script>  
+  window.addEventListener("scroll", () => {
+  const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollAtual = window.scrollY;
+
+  if (scrollAtual >= scrollTotal - 10) {
+    document.getElementById("botaoSecreto").style.display = "block";
+  }
+});
     
   window.onload = function() {
   if (localStorage.getItem("logado") === "sim") {
