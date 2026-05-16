@@ -305,10 +305,6 @@ button:hover {
   to { transform: scale(1); opacity: 1; }
 }
 
-#botaoSecreto {
-  animation: aparecer 1s ease forwards;
-}
-
 </style>  
   
 </head>  
@@ -328,8 +324,6 @@ button:hover {
 <button onclick="abrirFotos()">Nossa trajetória 💕</button>
 
 <p id="extra" style="margin-top:15px;"></p>
-
-<button id="btnCarta" onclick="mostrarCarta()">Ler minha carta 💌</button>
 
   <div id="carta" class="hidden"></div>    <audio id="music" loop>  
     <source src="musica.mp3" type="audio/mpeg">  
@@ -856,14 +850,6 @@ document.addEventListener("click", () => {
   }
 });
 
-window.addEventListener("scroll", () => {
-  const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollAtual = window.scrollY;
-
-  if (scrollAtual >= scrollTotal - 10) {
-    document.getElementById("botaoSecreto").style.display = "block";
-  }
-});
 function mostrarVideo() {
   document.body.innerHTML += `
     <div style="
